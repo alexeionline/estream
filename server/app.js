@@ -1,26 +1,21 @@
 var   express           = require("express")
-	, crypto			= require("crypto")
 	, path              = require("path")
 	, fs                = require("fs")
 	, lessMiddleware    = require("less-middleware")
     , mongoose          = require("mongoose")
     , db                = mongoose.connection
-	, nodemailer 		= require("nodemailer")
-	, gm                = require("gm").subClass({ imageMagick: true })
 	, bodyParser        = require("body-parser")
 	, compression		= require("compression")
-	, io			    = require("socket.io")
 	
 	, app               = express()
 
 	, expressValidator  = require("express-validator")
 
-	, staticPath        = path.resolve(__dirname, "..", "client")
+	, staticPath        = path.resolve(__dirname, "..", "webapp")
     , models_path = path.resolve(__dirname, "models")
 	, mongodb
 	, server
 	, settings = require("./helpers/settings")
-	, sio
     , winston = require("winston")
 ;
 
@@ -95,7 +90,7 @@ fs.readdirSync(models_path).forEach(function (file) {
 });
 
 //adding controllers
-var eventController = require("./controllers/eventController.js");
+var eventController = require("./controllers/eventController");
 
 app.use("/api/v1/event", eventController);
 
@@ -127,15 +122,6 @@ db.on("error", function(err) {
 });
 db.on("open", function() {
     server = app.listen(settings.env.port || process.env.PORT, function () {
-		sio = io(server);
         console.log("Example app listening at http://%s:%s", server.address().address, server.address().port);
 	});
-});
-
-//graceful shutdown
-process.on("SIGINT", function () {
-    server.close();
-    // calling .shutdown allows your process to exit normally
-    toobusy.shutdown();
-    process.exit();
 });
