@@ -21,7 +21,6 @@ var   express           = require("express")
 	, server
 	, settings = require("./helpers/settings")
 	, sio
-    , toobusy = require("toobusy")
     , winston = require("winston")
 ;
 
@@ -96,7 +95,9 @@ fs.readdirSync(models_path).forEach(function (file) {
 });
 
 //adding controllers
+var eventController = require("./controllers/eventController.js");
 
+app.use("/api/v1/event", eventController);
 
 //catch all unmatched routes to errors
 app.all("*", function (req, res, next) {
