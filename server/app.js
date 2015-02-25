@@ -3,7 +3,6 @@ var   express           = require("express")
 	, fs                = require("fs")
 	, lessMiddleware    = require("less-middleware")
     , mongoose          = require("mongoose")
-    , db                = mongoose.connection
 	, bodyParser        = require("body-parser")
 	, compression		= require("compression")
 	
@@ -13,8 +12,6 @@ var   express           = require("express")
 
 	, staticPath        = path.resolve(__dirname, "..", "webapp")
     , models_path = path.resolve(__dirname, "models")
-	, mongodb
-	, server
 	, settings = require("./helpers/settings")
     , winston = require("winston")
 ;
@@ -114,6 +111,8 @@ app.use(function (err, req, res, next) {
 });
 
 
+var server;
+var db = mongoose.connection;
 mongoose.connect(settings.db.connectionString);
 db.on("error", function(err) {
     if (err) {
