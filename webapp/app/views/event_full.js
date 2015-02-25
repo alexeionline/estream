@@ -1,3 +1,3 @@
 var EventFullView = Backbone.Marionette.ItemView.extend({
-	template: "#some-template"
+	template: "#event_full"
 });

@@ -3,17 +3,15 @@ var app = new Mn.Application();
 function loadInitialData () {
 	return new Promise(function (resolve, reject) {
 
-		var events = new Events;
+		app.events = new Events;
 
-		events.fetch({
+		app.events.fetch({
 			success: function (data) {
 				var eventsView = new EventsView({
-					collection: events
+					collection: app.events
 				});
 
-				var html = eventsView.render().$el;
-
-				$("#ev_place").html(html);
+				$("#ev_place").html(eventsView.render().$el);
 
 				resolve({});
 			}

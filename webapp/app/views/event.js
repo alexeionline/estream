@@ -1,3 +1,11 @@
 var EventView = Backbone.Marionette.ItemView.extend({
-  template: "#event"
+  template: "#event",
+
+  events: {
+  	'click': 'showdetails'
+  },
+
+  showdetails: function () {
+  	Backbone.history.navigate("details/" + this.model.id, {trigger: true});
+  }
 });

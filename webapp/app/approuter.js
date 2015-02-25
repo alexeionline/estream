@@ -6,7 +6,13 @@ var MyRouter = Backbone.Marionette.AppRouter.extend({
 	},
 
 	details : function(event_id){
-	// do something here.
+		var curevent = app.events.get(event_id);
+
+		var ev = new EventFullView({
+			model: curevent
+		});
+
+		$("#ev_details").html(ev.render().$el);
 	},
 
 	addevent: function () {
