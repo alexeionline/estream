@@ -4,13 +4,34 @@
 		<script src="assets/js/underscore.js"></script>
 		<script src="assets/js/backbone.js"></script>
 		<script src="assets/js/backbone.marionette.js"></script>
+
+		<script src="app/views/event.js"></script>
+		<script src="app/views/event_full.js"></script>
+		<script src="app/views/event_form.js"></script>
+		<script src="app/models/event.js"></script>
+		<script src="app/collections/events.js"></script>
+		<script src="app/approuter.js"></script>
+		<script src="app/app.js"></script>
 	</head>
 	<body>
 
-	<input type="checkbox" id="ch1"></input>
-	<label for="ch1">hfjdhfdj</label>
+		<script id="event" type="javascript/template">
+			<p><%= title %></p>
+		</script>
+		
+		<script id="event_full" type="javascript/template">
+			<p><%= title %></p>
+			<p><%= description %></p>
+		</script>
 
-
+		<script id="event_form" type="javascript/template">
+			<p><input name="title"></p>
+			<p><input name="descrition"></p>
+		</script>
+		
+		<script id="events" type="javascript/template">
+			<div class="events_list"></div>
+		</script>
 		
 	</body>
 </html>
