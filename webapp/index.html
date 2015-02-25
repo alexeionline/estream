@@ -6,25 +6,27 @@
 		<script src="assets/js/backbone.marionette.js"></script>
 
 		<script src="app/views/event.js"></script>
+		<script src="app/views/events.js"></script>
 		<script src="app/views/event_full.js"></script>
 		<script src="app/views/event_form.js"></script>
 		<script src="app/models/event.js"></script>
 		<script src="app/collections/events.js"></script>
 		<script src="app/approuter.js"></script>
-		<script src="app/app.js"></script>
+		
 	</head>
 	<body>
-
-
 		<a href="">load</a>
 		<a href="#addevent">add</a>
 
-
-
 		<div id="form_place"></div>
+		<div id="ev_place"></div>
 
 		<script id="event" type="text/template">
 			<p><%= title %></p>
+		</script>
+
+		<script id="events" type="text/template">
+			<div class="evs"></div>	
 		</script>
 		
 		<script id="event_full" type="text/template">
@@ -36,11 +38,14 @@
 		ewffewefw
 			<p><input name="title"></p>
 			<p><input name="descrition"></p>
+			<p><button name="save">save</button></p>
 		</script>
 		
 		<script id="events" type="text/template">
 			<div class="events_list"></div>
 		</script>
+
+		<script src="app/app.js"></script>
 		
 	</body>
 </html>

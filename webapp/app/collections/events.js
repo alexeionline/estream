@@ -1,3 +1,7 @@
 var Events = Backbone.Collection.extend({
-	model: Event
+	url: '/api/v1/event',
+	model: Event,
+	parse: function (res) {
+		return res.data;
+	}
 });
