@@ -18,7 +18,6 @@
     "less-middleware": "*",
     "mongodb": "^2.0.7",
     "mongoose": "^3.8.19",
-    "node-fast-cache": "0.2.*",
     "node-uuid": "^1.4.1",
     "nodemailer": "*",
     "socket.io": "^1.2.1",

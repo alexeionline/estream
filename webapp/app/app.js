@@ -12,6 +12,7 @@ function loadInitialData () {
 
 // Start history when our application is ready
 app.on('start', function() {
+	new MyRouter;
 	Backbone.history.start();
 });
 

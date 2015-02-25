@@ -15,7 +15,7 @@ var   express           = require("express")
 
 	, expressValidator  = require("express-validator")
 
-	, staticPath        = path.resolve(__dirname, "..", "client")
+	, staticPath        = path.resolve(__dirname, "..", "webapp")
     , models_path = path.resolve(__dirname, "models")
 	, mongodb
 	, server
