@@ -18,7 +18,7 @@ router.post("/", function (req, res, next) {
 
     EventService.save(req.body.title, req.body.description)
         .then(function(event) {
-            return EventService.saveHashtags(event, req.body.hashtags);
+            return EventService.saveHashtags(event, req.body.tags);
         })
         .then(function(data) {
             res.json({

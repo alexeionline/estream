@@ -4,8 +4,9 @@ var HashTag = require("../models/hashtag");
 
 function Service() { };
 
-Service.prototype.getEvents = function() {
-    return new Promise(function(resolve, reject) {
+Service.prototype.getEvents = function () {
+
+    var getEvents = new Promise(function(resolve, reject) {
         Event.find().lean().exec(function (err, events) {
             if (err) {
                 reject(err);
@@ -13,6 +14,35 @@ Service.prototype.getEvents = function() {
                 resolve(events);
             }
         });
+        });
+    var getHashTags = function (events) {
+        return new Promise(function (resolve, reject) {
+            var ids = events.map(function (event) {
+                return event._id;
+            });
+
+            HashTag.find({ event: { $in: ids } }).lean().exec(function(err, hashTags) {
+                if (err) {
+                    reject(err);
+                } else {
+                    var data = events.map(function(event) {
+                        var eventTags = hashTags.filter(function(tag) {
+                            return tag.event.toString() === event._id.toString();
+                        });
+
+                        event.tags = eventTags;
+
+                        return event;
+                    });
+                    resolve(data);
+                }
+            });
+        });
+    }
+
+
+    return getEvents.then(function(events) {
+        return getHashTags(events);
     });
 }
 
