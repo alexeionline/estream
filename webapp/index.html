@@ -9,18 +9,25 @@
 		<script src="app/views/events.js"></script>
 		<script src="app/views/event_full.js"></script>
 		<script src="app/views/event_form.js"></script>
+		<script src="app/views/mainlayout.js"></script>
 		<script src="app/models/event.js"></script>
 		<script src="app/collections/events.js"></script>
 		<script src="app/approuter.js"></script>
-		
+
+		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
-		<a href="">load</a>
-		<a href="#addevent">add</a>
-
-		<div id="form_place"></div>
-		<div id="ev_details"></div>
-		<div id="ev_place"></div>
+		<script id="layout" type="text/template">
+			<header>
+				<a href="/"><h1>eventshub.io</h1></a>
+				<a class="addevent" href="addevent">add</a>
+			</header>
+			<section>
+				<div id="addDialog"></div>
+				<div id="details"></div>
+				<div id="ev_place"></div>
+			</section>
+		</script>
 
 		<script id="event" type="text/template">
 			<p><%= title %></p>
@@ -33,12 +40,17 @@
 		<script id="event_full" type="text/template">
 			<p><%= title %></p>
 			<p><%= description %></p>
+			<% _.each(tags, function (tag) { %>
+				<span> <%= tag %> </span>
+			<% }) %>
 		</script>
 
 		<script id="event_form" type="text/template">
-		ewffewefw
 			<p><input name="title"></p>
 			<p><input name="descrition"></p>
+			<p><input name="ht"></p>
+			<p><input name="ht"></p>
+			<p><input name="ht"></p>
 			<p><button name="save">save</button></p>
 		</script>
 		

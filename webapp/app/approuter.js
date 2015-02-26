@@ -6,28 +6,21 @@ var MyRouter = Backbone.Marionette.AppRouter.extend({
 	},
 
 	details : function(event_id){
-		var curevent = app.events.get(event_id);
-
-		var ev = new EventFullView({
-			model: curevent
+		var eventDetails = new EventFullView({
+			model: app.events.get(event_id)
 		});
 
-		$("#ev_details").html(ev.render().$el);
+		app.layout.details.show(eventDetails);
+
 	},
 
 	addevent: function () {
-
-		var model = new Event;
-
 		var view = new EventFormView({
-			model: model
+			model: new Event
 		});
 
-		var html = view.render().$el;
+		app.layout.addDialog.show(view);
 
-		$("#form_place").html(html);
-
-		console.log($("#form_place"));
 	}
 
 });

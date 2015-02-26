@@ -1,0 +1,11 @@
+.eventShort {
+	border: solid 1px #ccc;
+	margin: 10px;
+	padding: 10px;
+}
+
+.eventFull {
+	border: solid 1px #222;
+	margin: 10px;
+	padding: 10px;
+}

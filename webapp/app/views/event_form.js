@@ -5,7 +5,8 @@ var EventFormView = Backbone.Marionette.ItemView.extend({
 	ui: {
         'title':      '[name="title"]',
         'descrition': '[name="descrition"]',
-        'save':       '[name="save"]'
+        'save':       '[name="save"]',
+        'ht':         '[name="ht"]'
 	},
 
 	events: {
@@ -14,8 +15,11 @@ var EventFormView = Backbone.Marionette.ItemView.extend({
 
 	save: function () {
 		this.model.save({
-			'title':      this.ui.title.val(),
-        	'description': this.ui.descrition.val()
+            'title':        this.ui.title.val(),
+            'description':  this.ui.descrition.val(),
+            'tags':         this.ui.ht.map(function (){
+								return $(this).val()
+							}).toArray()
 		});
 	}
 });

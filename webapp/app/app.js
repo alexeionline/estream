@@ -7,12 +7,6 @@ function loadInitialData () {
 
 		app.events.fetch({
 			success: function (data) {
-				var eventsView = new EventsView({
-					collection: app.events
-				});
-
-				$("#ev_place").html(eventsView.render().$el);
-
 				resolve({});
 			}
 		});
@@ -21,8 +15,18 @@ function loadInitialData () {
 
 // Start history when our application is ready
 app.on('start', function() {
-	new MyRouter;
-	Backbone.history.start();
+	app.layout = new AppLayoutView;
+	app.router = new MyRouter;
+
+	app.layout.render().$el.appendTo('body');
+
+	var eventsView = new EventsView({
+		collection: app.events
+	});
+
+	$("#ev_place").html(eventsView.render().$el);
+
+	Backbone.history.start({pushState: true});
 });
 
 // Load some initial data, and then start our application
