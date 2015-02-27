@@ -19,10 +19,43 @@
 	<body>
 		<script id="layout" type="text/template">
 			<header>
-				<a href="/"><h1>eventshub.io</h1></a>
-				<a class="addevent" href="addevent">add</a>
+				<section class="topsection">
+					<a class="addevent" href="addevent">add</a>
+				</section>	
+				<section class="bottomsection">
+					<div class="logo"><a href="/"><h1>evehub.io</h1></a></div>
+					<p class="search-block">
+						<input type="text" class="search">
+						<button>go</button>
+					</p>
+					<ul class="hts">
+						<li>
+							<a href="" data-value="pivo">#pivo</a>
+						</li>
+						<li>
+							<a href="" data-value="cinema">#cinema</a>
+						</li>
+						<li>
+							<a href="" data-value="auto">#auto</a>
+						</li>
+						<li>
+							<a href="" data-value="sport">#sport</a>
+						</li>
+						<li>
+							<a href="" data-value="tits">#tits</a>
+						</li>
+						<li>
+							<a href="" data-value="disco">#disco</a>
+						</li>
+						<li>
+							<a href="" data-value="jopy">#jopy</a>
+						</li>
+					</ul>
+				</section>	
+				<section class="time">
+				</section>	
 			</header>
-			<section>
+			<section class="content">
 				<div id="addDialog"></div>
 				<div id="details"></div>
 				<div id="ev_place"></div>
@@ -38,20 +71,28 @@
 		</script>
 		
 		<script id="event_full" type="text/template">
-			<p><%= title %></p>
-			<p><%= description %></p>
-			<% _.each(tags, function (tag) { %>
-				<span> <%= tag.hashtag %> </span>
-			<% }) %>
+			<div class="overlay">
+				<div class="modal1">
+					<p><%= title %></p>
+					<p><%= description %></p>
+					<% _.each(tags, function (tag) { %>
+						<span> <%= tag.hashtag %> </span>
+					<% }) %>
+				</div>
+			</div>
 		</script>
 
 		<script id="event_form" type="text/template">
-			<p><input name="title"></p>
-			<p><input name="descrition"></p>
-			<p><input name="ht"></p>
-			<p><input name="ht"></p>
-			<p><input name="ht"></p>
-			<p><button name="save">save</button></p>
+			<div class="overlay">
+				<div class="modal1">
+					<p><input name="title"></p>
+					<p><input name="descrition"></p>
+					<p><input name="ht"></p>
+					<p><input name="ht"></p>
+					<p><input name="ht"></p>
+					<p><button name="save">save</button></p>
+				</div>
+			</div>
 		</script>
 		
 		<script id="events" type="text/template">

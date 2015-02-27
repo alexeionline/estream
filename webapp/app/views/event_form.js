@@ -10,6 +10,7 @@ var EventFormView = Backbone.Marionette.ItemView.extend({
 	},
 
 	events: {
+		'click': 'close',
 		'click @ui.save': 'save'
 	},
 
@@ -21,5 +22,10 @@ var EventFormView = Backbone.Marionette.ItemView.extend({
 								return $(this).val()
 							}).toArray()
 		});
+	},
+
+	close: function () {
+		app.layout.addDialog.empty();
+		Backbone.history.navigate("/");
 	}
 });
