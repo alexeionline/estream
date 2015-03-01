@@ -1,11 +1,11 @@
 ﻿var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-var hastagSchema = new Schema({
-    hashtag: { type: String, required: true },
+var tagSchema = new Schema({
+    tag: { type: String, required: true },
     event: { type: Schema.Types.ObjectId, ref: "Event", required: true }
 });
 
-var Event = mongoose.model("Hashtag", hastagSchema);
+var Event = mongoose.model("Tag", tagSchema);
 
 module.exports = Event;

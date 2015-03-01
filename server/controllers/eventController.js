@@ -2,6 +2,7 @@
 var router = express.Router();
 var Event = require("../models/event");
 var EventService = require("../services/eventService");
+var TagService = require("../services/tagService");
 
 router.post("/", function (req, res, next) {
     req.checkBody("title", "Empty title").notEmpty();
@@ -18,7 +19,7 @@ router.post("/", function (req, res, next) {
 
     EventService.save(req.body.title, req.body.description)
         .then(function(event) {
-            return EventService.saveHashtags(event, req.body.tags);
+            return TagService.save(event, req.body.tags);
         })
         .then(function(data) {
             res.json({
@@ -36,7 +37,8 @@ router.post("/", function (req, res, next) {
 });
 
 router.get("/", function (req, res, next) {
-    EventService.getEvents().then(function(data) {
+    EventService.getEvents()
+    .then(function (data) {
         return res.json({
             data: data
         });

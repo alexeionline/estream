@@ -88,8 +88,10 @@ fs.readdirSync(models_path).forEach(function (file) {
 
 //adding controllers
 var eventController = require("./controllers/eventController");
+var tagController = require("./controllers/tagController");
 
 app.use("/api/v1/event", eventController);
+app.use("/api/v1/tag", tagController);
 
 //catch all unmatched routes to errors
 app.all("*", function (req, res, next) {
