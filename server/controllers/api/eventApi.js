@@ -17,7 +17,7 @@ router.post("/", function (req, res, next) {
         return next(validationError);
     }
 
-    EventService.save(req.body.title, req.body.description)
+    EventService.save(req.body.title, req.body.description, req.body.start, req.body.locationName, req.body.lat, req.body.lng)
         .then(function(event) {
             return TagService.save(event, req.body.tags);
         })

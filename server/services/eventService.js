@@ -32,11 +32,14 @@ Service.prototype.getEvent = function (id) {
     return getEvent.then(TagService.getByEvent);
 }
 
-Service.prototype.save = function(title, description) {
+Service.prototype.save = function(title, description, start, locationName, lat, lng) {
     return new Promise(function(resolve, reject) {
         var event = new Event({
             title: title,
-            description: description
+            description: description,
+            start: start,
+            locationName: locationName,
+            location: [lng, lat]
         });
         
         event.save(function (err, saved) {
