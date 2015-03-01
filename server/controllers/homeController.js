@@ -1,13 +1,14 @@
 ﻿var express = require("express");
 var router = express.Router();
-var EventService = require("../services/eventService");
+var TagService = require("../services/tagService");
 
-router.get("/:id", function (req, res, next) {
-    var id = req.params.id;
+router.get("/", function (req, res, next) {
+    TagService.popular().then(function (data) {
+        var model = {
+            tags: data
+        };
 
-    EventService.getEvent(id)
-    .then(function (data) {
-        res.render("event/index", { model: data });
+        res.render("home/index", { model: model });
     }).catch(function (err) {
         req.logger.error("controllers/tag.js: Error getting popular tags", { mongoError: err });
         
@@ -17,7 +18,6 @@ router.get("/:id", function (req, res, next) {
         
         next(error);
     });
-    
 });
 
 module.exports = router;

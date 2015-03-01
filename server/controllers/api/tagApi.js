@@ -1,6 +1,6 @@
 ﻿var express = require("express");
 var router = express.Router();
-var TagService = require("../services/tagService");
+var TagService = require("../../services/tagService");
 
 router.get("/popular", function(req, res, next) {
     TagService.popular()

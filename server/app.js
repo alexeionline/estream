@@ -97,26 +97,18 @@ fs.readdirSync(models_path).forEach(function (file) {
 });
 
 //adding controllers
+var eventApi = require("./controllers/api/eventApi");
+var tagApi = require("./controllers/api/tagApi");
+
+var homeController = require("./controllers/homeController");
 var eventController = require("./controllers/eventController");
-var tagController = require("./controllers/tagController");
 
-app.use("/api/v1/event", eventController);
-app.use("/api/v1/tag", tagController);
+app.use("/api/v1/event", eventApi);
+app.use("/api/v1/tag", tagApi);
 
-app.get('/', function (req, res, next) {
-    require('./services/tagService').popular().then(function(data){
-        res.render('home/index', {tags: data});
-    });
-});
+app.use("/event", eventController);
+app.use("/", homeController);
 
-app.get('/details/:ev_id', function (req, res, next) {
-    var ev_id = req.params.ev_id;
-    require('./services/eventService').getEvent(ev_id)
-    .then(function(data){
-        res.render('event/index', {data: data});
-    })
-    
-});
 
 //catch all unmatched routes to errors
 app.all("*", function (req, res, next) {

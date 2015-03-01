@@ -1,11 +1,11 @@
 var MyRouter = Backbone.Marionette.AppRouter.extend({
   
 	routes: {
-		"details/:event_id" : "details",
+		"event/:event_id" : "event",
 		"addevent" : "addevent"
 	},
 
-	details : function(event_id){
+	event : function(event_id){
 		var eventDetails = new EventFullView({
 			model: app.events.get(event_id)
 		});
