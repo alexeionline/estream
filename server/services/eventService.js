@@ -5,7 +5,7 @@ var TagService = require("../services/tagService");
 function Service() { };
 
 Service.prototype.getEvents = function () {
-    var getEvents = new Promise(function(resolve, reject) {
+    return new Promise(function(resolve, reject) {
         Event.find().lean().exec(function (err, events) {
             if (err) {
                 reject(err);
@@ -13,9 +13,23 @@ Service.prototype.getEvents = function () {
                 resolve(events);
             }
         });
-    });
+    }).then(TagService.getByEvents);
+}
 
-    return getEvents.then(TagService.getByEvents);
+Service.prototype.getEventsByTag = function (tag) {
+    return new Promise(function (resolve, reject) {
+        Tag.find({ tag: tag }).populate("event").lean()
+        .exec(function (err, tags) {
+            if (err) {
+                reject(err);
+            } else {
+                var events = tags.map(function(matched) {
+                    return matched.event;
+                });
+                resolve(events);
+            }
+        });
+    }).then(TagService.getByEvents);
 }
 
 Service.prototype.getEvent = function (id) {
