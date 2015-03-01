@@ -18,6 +18,20 @@ Service.prototype.getEvents = function () {
     return getEvents.then(TagService.getByEvents);
 }
 
+Service.prototype.getEvent = function (id) {
+    var getEvent= new Promise(function(resolve, reject) {
+        Event.findOne({_id: id}).lean().exec(function (err, ev) {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(ev);
+            }
+        });
+    });
+
+    return getEvent.then(TagService.getByEvent);
+}
+
 Service.prototype.save = function(title, description) {
     return new Promise(function(resolve, reject) {
         var event = new Event({

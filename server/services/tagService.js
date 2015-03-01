@@ -46,6 +46,20 @@ Service.prototype.save = function (event, tags) {
     });
 }
 
+Service.prototype.getByEvent = function(event) {
+    return new Promise(function (resolve, reject) {
+        Tag.find({ event: event.id }).lean().exec(function (err, tags) {
+            if (err) {
+                console.log(err)
+                reject(err);
+            } else {
+                event.tags = tags;
+                resolve(event);
+            }
+        });
+    });
+}
+
 Service.prototype.getByEvents = function(events) {
     return new Promise(function (resolve, reject) {
         var ids = events.map(function (event) {

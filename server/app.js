@@ -111,8 +111,11 @@ app.get('/', function (req, res, next) {
 
 app.get('/details/:ev_id', function (req, res, next) {
     var ev_id = req.params.ev_id;
-    console.log(ev_id);
-    res.render('home/index');
+    require('./services/eventService').getEvent(ev_id)
+    .then(function(data){
+        res.render('event/index', {data: data});
+    })
+    
 });
 
 //catch all unmatched routes to errors
