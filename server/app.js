@@ -1,19 +1,21 @@
 var   express           = require("express")
-	, path              = require("path")
-	, fs                = require("fs")
-	, lessMiddleware    = require("less-middleware")
+    , path              = require("path")
+    , fs                = require("fs")
+    , lessMiddleware    = require("less-middleware")
     , mongoose          = require("mongoose")
-	, bodyParser        = require("body-parser")
+    , bodyParser        = require("body-parser")
 	, compression		= require("compression")
 	
-	, app               = express()
+    , app               = express()
 
-	, expressValidator  = require("express-validator")
+    , exphbs            = require('express-handlebars')
 
-	, staticPath        = path.resolve(__dirname, "..", "webapp")
-    , models_path = path.resolve(__dirname, "models")
-	, settings = require("./helpers/settings")
-    , winston = require("winston")
+    , expressValidator  = require("express-validator")
+
+    , staticPath        = path.resolve(__dirname, "..", "webapp")
+    , models_path       = path.resolve(__dirname, "models")
+    , settings          = require("./helpers/settings")
+    , winston           = require("winston")
 ;
 
 //toobusy implementation
@@ -25,7 +27,15 @@ var   express           = require("express")
     }#1#
 });*/
 
+//HBS setup
+var hbs = exphbs.create({
+    defaultLayout: 'main'
+});
+
 //express middleware
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
 app.use(compression());
 app.use(lessMiddleware(staticPath));
 app.use(express.static(staticPath));
@@ -92,6 +102,18 @@ var tagController = require("./controllers/tagController");
 
 app.use("/api/v1/event", eventController);
 app.use("/api/v1/tag", tagController);
+
+app.get('/', function (req, res, next) {
+    require('./services/tagService').popular().then(function(data){
+        res.render('home/index', {tags: data});
+    });
+});
+
+app.get('/details/:ev_id', function (req, res, next) {
+    var ev_id = req.params.ev_id;
+    console.log(ev_id);
+    res.render('home/index');
+});
 
 //catch all unmatched routes to errors
 app.all("*", function (req, res, next) {
