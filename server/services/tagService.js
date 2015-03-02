@@ -7,7 +7,7 @@ Service.prototype.unique = function (tag) {
     if (tag && tag.length > 0) {
         var unique = [], tempObj = {};
         tag.forEach(function (val) {
-            var stringified = val.userRef.toString();
+            var stringified = val;
             if (!tempObj[stringified]) {
                 unique.push(val);
                 tempObj[stringified] = val;
