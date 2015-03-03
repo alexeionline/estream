@@ -46,7 +46,7 @@ header {
 	top: 0;
 	left: 0;
 	right: 0;
-	z-index: 9999;
+	z-index: 80;
 }
 
 .search-block {
@@ -119,7 +119,7 @@ header {
 	position: fixed;
 	top: 0; left: 0; right: 0; bottom: 0;
 	background: rgba(0,0,0,0.8);
-	z-index: 9998;
+	z-index: 90;
 }
 
 .modal1 {
@@ -133,4 +133,36 @@ header {
 	margin-left: -150px;
 	padding: 15px;
 }
+
+.modal2 {
+	background: #FFF;
+	position: fixed;
+	width: 300px;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	padding: 0;
+	z-index: 100;
+}
+
+.modal2 .fields {
+	padding: 15px;
+}
+
+.modal2 .fields .field:hover input,
+.modal2 .fields .field label {
+	display: inline;
+}
+
+.modal2 .fields .field input,
+.modal2 .fields .field:hover label {
+	display: none;
+}
+
+.field {
+	padding: 10px;
+}
+
+
+
 

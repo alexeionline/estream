@@ -63,17 +63,29 @@
 
 <script id="event_form" type="text/template">
 	<div class="overlay">
-		<div class="modal1">
-			<p><input name="title" placeholder="title"></p>
-			<p><input name="descrition" placeholder="descrition"></p>
-			<p><input name="ht" placeholder="ht"></p>
-			<p><input name="ht" placeholder="ht"></p>
-			<p><input name="ht" placeholder="ht"></p>
-			<p><input name="lat" placeholder="lat" value="1"></p>
-			<p><input name="lng" placeholder="lng" value="2"></p>
-			<p><input name="datetime" placeholder="datetime" value="1425328994065"></p>
-			<p><input name="locationName" placeholder="locationName" value="locationName"></p>
-			<p><button name="save">save</button><button name="close">close</button></p>
+		<div class="modal2">
+			<div class="image-upload">filename</div>
+			<div class="fields">
+
+				<p class="field" data-type="title">
+					<label><%= title %></label>
+					<input name="title" placeholder="title" value="<%= title %>">
+				</p>
+
+				<p class="field" data-type="description">
+					<label><%= description %></label>
+					<input name="descrition" placeholder="descrition" value="<%= description %>">
+				</p>
+			
+				<p><input name="ht" placeholder="ht"></p>
+				<p><input name="ht" placeholder="ht"></p>
+				<p><input name="ht" placeholder="ht"></p>
+				<p><input name="lat" placeholder="lat" value="1"></p>
+				<p><input name="lng" placeholder="lng" value="2"></p>
+				<p><input name="datetime" placeholder="datetime" value="1425328994065"></p>
+				<p><input name="locationName" placeholder="locationName" value="locationName"></p>
+				<p><button name="save">save</button><button name="close">close</button></p>
+			</div>	
 		</div>
 	</div>
 </script>
