@@ -149,20 +149,8 @@ header {
 	padding: 15px;
 }
 
-.modal2 .fields .field:hover input,
-.modal2 .fields .field label {
-	display: inline;
-}
-
-.modal2 .fields .field input,
-.modal2 .fields .field:hover label {
+.hide {
 	display: none;
 }
-
-.field {
-	padding: 10px;
-}
-
-
 
 

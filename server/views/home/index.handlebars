@@ -64,27 +64,39 @@
 <script id="event_form" type="text/template">
 	<div class="overlay">
 		<div class="modal2">
-			<div class="image-upload">filename</div>
+			<div class="image-upload">
+				<img src="http://placehold.it/400x150">
+			</div>
 			<div class="fields">
 
-				<p class="field" data-type="title">
-					<label><%= title %></label>
-					<input name="title" placeholder="title" value="<%= title %>">
+				<p>
+					<input name="title" placeholder="title" value="<%= title %>" data-type="title">
 				</p>
 
-				<p class="field" data-type="description">
-					<label><%= description %></label>
-					<input name="descrition" placeholder="descrition" value="<%= description %>">
+				<p>
+					<textarea name="description" data-type="description"><%= description %></textarea>
 				</p>
 			
-				<p><input name="ht" placeholder="ht"></p>
-				<p><input name="ht" placeholder="ht"></p>
-				<p><input name="ht" placeholder="ht"></p>
-				<p><input name="lat" placeholder="lat" value="1"></p>
-				<p><input name="lng" placeholder="lng" value="2"></p>
-				<p><input name="datetime" placeholder="datetime" value="1425328994065"></p>
-				<p><input name="locationName" placeholder="locationName" value="locationName"></p>
-				<p><button name="save">save</button><button name="close">close</button></p>
+				<p>
+					<% _.each(tags, function (tag) { %>
+						<span>#<%= tag %></span>
+					<% }); %>
+					<input name="ht" placeholder="ht">
+					<button class="addHT">add</button>
+				</p>
+
+				<p>
+					<input type="date" name="datetime" value="<%= datetime %>" data-type="datetime">
+				</p>
+
+				<p>
+					<input name="locationName" placeholder="locationName" data-type="data-type=" value="<%= locationName %>">
+				</p>
+				
+				<p>
+					<button name="save">save</button>
+					<button name="close">close</button>
+				</p>
 			</div>	
 		</div>
 	</div>

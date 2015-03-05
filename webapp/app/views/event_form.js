@@ -17,7 +17,8 @@ var EventFormView = Backbone.Marionette.ItemView.extend({
 	events: {
 		'click @ui.close': 'close',
 		'click @ui.save': 'save',
-		'mouseleave .field': 'changeField'
+		'blur [data-type]': 'changeMode',
+		'click .addHT': 'addHT'
 	},
 
 	save: function () {
@@ -34,14 +35,26 @@ var EventFormView = Backbone.Marionette.ItemView.extend({
 		});
 	},
 
+	addHT: function () {
+		var nweht = this.ui.ht.val();
+
+		if (nweht) {
+			this.model.get('tags').push(nweht);
+			this.render();
+		}
+	},
+
 	close: function (e) {
 		app.layout.addDialog.empty();
 		Backbone.history.navigate("/");
 	},
 
-	changeField: function (e) {
-		var field = $(e.target).data('type');
-		var value = $(e.target).find('input').val();
+	changeMode: function (e) {
+		var input = $(e.target);
+		var field = input.data('type');
+		var value = input.val();
+
+		console.log(value);
 
 		this.model.set(field, value);
 		this.render();
