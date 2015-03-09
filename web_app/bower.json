@@ -1,0 +1,14 @@
+{
+  "name": "estream",
+  "version": "0.0.2",
+  "homepage": "https://github.com/alexeionline/estream",
+  "authors": [
+    "alexeionline"
+  ],
+  "description": "event streamer",
+  "license": "MIT",
+  "dependencies": {
+    "marionette": "~2.4.1",
+    "normalize.css": "~3.0.2"
+  }
+}

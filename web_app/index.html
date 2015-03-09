@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<!-- bower:css -->
+	<!-- bowerend -->
+
+	<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+	<script id="layout" type="text/template">
+		<header>
+			<section class="topsection">
+				<a class="addevent" href="addevent">add</a>
+			</section>	
+			<section class="bottomsection">
+				<div class="logo"><a href="/"><h1>evehub.io</h1></a></div>
+				<p class="search-block">
+					<input type="text" class="search">
+					<button>go</button>
+				</p>
+				<ul class="hts">
+					{{#each model.tags}}
+						<li>
+							<a href="" data-value="{{_id}}">#{{_id}}</a>
+						</li>
+					{{/each}}
+				</ul>
+			</section>	
+			<section class="time">
+			</section>	
+		</header>
+		<section class="content">
+			<div id="addDialog"></div>
+			<div id="details"></div>
+			<div id="ev_place"></div>
+		</section>
+	</script>
+
+	<script id="event" type="text/template">
+		<div class="ev-header">
+			<img src="http://placehold.it/200x80">
+		</div>
+		<div>
+			<h3><%= title %></h2>
+			<h2>22.12.2017</h2>
+		</div>
+		<div class="likes">
+			<p>33 лайки</p>
+			<p>11 хуяйки</p>
+		</div>
+		<div>
+			<p>lorem ipsun sddd sjh dshkds hdshsd sdkd skdsh d dskds</p>
+		</div>	
+		<p></p>
+	</script>
+
+	<script id="events" type="text/template">
+		<div class="evs"></div>	
+	</script>
+
+	<script id="event_full" type="text/template">
+		<div class="overlay">
+			<div class="modal1">
+				<p><%= title %></p>
+				<p><%= description %></p>
+				<% _.each(tags, function (tag) { %>
+					<span> <%= tag.hashtag %> </span>
+				<% }) %>
+			</div>
+		</div>
+	</script>
+
+	<script id="event_form" type="text/template">
+		<div class="overlay">
+			<div class="modal2">
+				<div class="image-upload">
+					<img src="http://placehold.it/400x150">
+				</div>
+				<div class="fields">
+
+					<p>
+						<input name="title" placeholder="title" value="<%= title %>" data-type="title">
+					</p>
+
+					<p>
+						<textarea name="description" data-type="description"><%= description %></textarea>
+					</p>
+				
+					<p>
+						<% _.each(tags, function (tag) { %>
+							<span>#<%= tag %></span>
+						<% }); %>
+						<input name="ht" placeholder="ht">
+						<button class="addHT">add</button>
+					</p>
+
+					<p>
+						<input type="date" name="datetime" value="<%= datetime %>" data-type="datetime">
+					</p>
+
+					<p>
+						<input name="locationName" placeholder="locationName" data-type="data-type=" value="<%= locationName %>">
+					</p>
+					
+					<p>
+						<button name="save">save</button>
+						<button name="close">close</button>
+					</p>
+				</div>	
+			</div>
+		</div>
+	</script>
+
+	<script id="events" type="text/template">
+		<div class="events_list"></div>
+	</script>
+
+	<!-- bower:js -->
+	<!-- bowerend -->
+
+	<script src="/app/views/event.js"></script>
+	<script src="/app/views/events.js"></script>
+	<script src="/app/views/event_full.js"></script>
+	<script src="/app/views/event_form.js"></script>
+	<script src="/app/views/mainlayout.js"></script>
+	<script src="/app/models/event.js"></script>
+	<script src="/app/collections/events.js"></script>
+	<script src="/app/approuter.js"></script>
+
+	<script src="/app/app.js"></script>
+</body>
+</html>

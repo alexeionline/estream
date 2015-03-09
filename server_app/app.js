@@ -1,22 +1,16 @@
 var   express           = require("express")
     , path              = require("path")
     , fs                = require("fs")
-    , lessMiddleware    = require("less-middleware")
     , mongoose          = require("mongoose")
     , bodyParser        = require("body-parser")
 	, compression		= require("compression")
-	
     , app               = express()
-
     , exphbs            = require('express-handlebars')
-
     , expressValidator  = require("express-validator")
-
-    , staticPath        = path.resolve(__dirname, "..", "webapp")
     , models_path       = path.resolve(__dirname, "models")
     , settings          = require("./helpers/settings")
     , winston           = require("winston")
-;
+    ;
 
 //toobusy implementation
 /*app.use(function (req, res, next) {
@@ -37,8 +31,6 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(compression());
-app.use(lessMiddleware(staticPath));
-app.use(express.static(staticPath));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(expressValidator({

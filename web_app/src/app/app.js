@@ -6,7 +6,7 @@ function loadInitialData () {
 		app.events = new Events;
 
 		app.events.fetch({
-			success: function (data) {
+			complete: function (data) {
 				resolve({});
 			}
 		});
