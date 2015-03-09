@@ -6,13 +6,13 @@
 settings/*
 web_app/public
 
-server_app/.ntvs_analysis.dat
-server_app/npm-debug.log
-server_app/bin/
-server_app/obj/
-server_app/.ntvs_analysis.dat.tmp
-server_app/logs/log.txt*
-server_app/logs/error_log*
-server_app/*.DotSettings.user
+server/.ntvs_analysis.dat
+server/npm-debug.log
+server/bin/
+server/obj/
+server/.ntvs_analysis.dat.tmp
+server/logs/log.txt*
+server/logs/error_log*
+server/*.DotSettings.user
 
 
