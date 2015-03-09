@@ -16,9 +16,9 @@
     "fb": "^0.7.0",
     "jwt-simple": "^0.2.0",
     "less-middleware": "*",
+    "lru-cache": "^2.5.0",
     "mongodb": "^2.0.7",
     "mongoose": "^3.9.7",
-    "node-fast-cache": "0.2.*",
     "node-uuid": "^1.4.1",
     "winston": "^0.8.3"
   }

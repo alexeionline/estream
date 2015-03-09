@@ -9,15 +9,13 @@ var authtokensSchema = new Schema({
 
 
 var userSchema = new Schema({
-    tag: { type: String, required: true },
-    event: { type: Schema.Types.ObjectId, ref: "Event", required: true },
-    
     facebook: {
         id: String,
-        token: String,
-        email: String,
-        name: String
+        token: String
     },
+    
+    name: { type: String, required: true },
+    email: {type: String, required: true},
     
     tokens: [authtokensSchema],
     
