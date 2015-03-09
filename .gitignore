@@ -2,6 +2,8 @@
 *.suo
 *.njsproj
 
+**/logs
+
 **/node_modules/*
 settings/*
 web_app/public
