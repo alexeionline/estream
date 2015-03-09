@@ -6,8 +6,8 @@ var TagService = require("../../services/tagService");
 
 router.post("/", function (req, res, next) {
     req.checkBody("title", "Empty title").notEmpty();
-    req.checkBody("description", "Empty description").notEmpty();
-    req.checkBody("locationName", "Empty location name").notEmpty();
+//    req.checkBody("description", "Empty description").notEmpty();
+//    req.checkBody("locationName", "Empty location name").notEmpty();
     req.checkBody("start", "Empty start").notEmpty();
     req.checkBody("start", "Start should be date").isDate();
     req.checkBody("lat", "Empty lat").notEmpty();
