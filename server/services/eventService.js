@@ -32,9 +32,15 @@ Service.prototype.getEventsByTag = function (tag) {
     }).then(TagService.getByEvents);
 }
 
-Service.prototype.getEvent = function (id) {
-    var getEvent= new Promise(function(resolve, reject) {
-        Event.findOne({_id: id}).lean().exec(function (err, ev) {
+Service.prototype.getEvent = function (id, lean) {
+    var getEvent = new Promise(function (resolve, reject) {
+        var query = Event.findOne({ _id: id });
+
+        if (lean) {
+            query = query.lean();
+        }
+
+        query.exec(function (err, ev) {
             if (err) {
                 reject(err);
             } else {
