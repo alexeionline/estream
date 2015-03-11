@@ -1,4 +1,4 @@
-﻿var UserService = require("../services/user");
+﻿var UserService = require("../services/userService");
 
 module.exports = function (req, res, next) {
     var key = req.header("X-Key");

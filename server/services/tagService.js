@@ -50,7 +50,6 @@ Service.prototype.getByEvent = function(event) {
     return new Promise(function (resolve, reject) {
         Tag.find({ event: event.id }).lean().exec(function (err, tags) {
             if (err) {
-                console.log(err)
                 reject(err);
             } else {
                 event.tags = tags;

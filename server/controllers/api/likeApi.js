@@ -15,9 +15,9 @@ router.post("/", function(req, res, next) {
         return next(validationError);
     }
 
-    EventService.getEvent(req.body.eventId, false)
+    EventService.getEvent(req.body.eventId)
     .then(function(event) {
-        return LikeService.create(event, req.user);
+        return LikeService.save(event, req.user);
     }).then(function() {
         return res.json({
             data: data

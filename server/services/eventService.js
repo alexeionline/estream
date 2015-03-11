@@ -1,6 +1,7 @@
 ﻿var async = require("async");
 var Event = require("../models/event");
 var TagService = require("../services/tagService");
+var LikeService = require("../services/likeService");
 
 function Service() { };
 
@@ -13,7 +14,7 @@ Service.prototype.getEvents = function () {
                 resolve(events);
             }
         });
-    }).then(TagService.getByEvents);
+    }).then(TagService.getByEvents).then(LikeService.populateLikes);
 }
 
 Service.prototype.getEventsByTag = function (tag) {
@@ -29,7 +30,7 @@ Service.prototype.getEventsByTag = function (tag) {
                 resolve(events);
             }
         });
-    }).then(TagService.getByEvents);
+    }).then(TagService.getByEvents).then(LikeService.populateLikes);
 }
 
 Service.prototype.getEvent = function (id, lean) {
@@ -49,7 +50,7 @@ Service.prototype.getEvent = function (id, lean) {
         });
     });
 
-    return getEvent.then(TagService.getByEvent);
+    return getEvent.then(TagService.getByEvent).then(LikeService.populateLikes);
 }
 
 Service.prototype.save = function(title, description, start, locationName, lat, lng) {
