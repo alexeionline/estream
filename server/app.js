@@ -5,7 +5,7 @@ var   express           = require("express")
     , bodyParser        = require("body-parser")
 	, compression		= require("compression")
     , app               = express()
-    , exphbs            = require('express-handlebars')
+    , exphbs            = require("express-handlebars")
     , expressValidator  = require("express-validator")
     , models_path       = path.resolve(__dirname, "models")
     , settings          = require("./helpers/settings")
@@ -23,12 +23,12 @@ var   express           = require("express")
 
 //HBS setup
 var hbs = exphbs.create({
-    defaultLayout: 'main'
+    defaultLayout: "main"
 });
 
 //express middleware
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
+app.engine("handlebars", hbs.engine);
+app.set("view engine", "handlebars");
 
 app.use(compression());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -91,12 +91,18 @@ fs.readdirSync(models_path).forEach(function (file) {
 //adding controllers
 var eventApi = require("./controllers/api/eventApi");
 var tagApi = require("./controllers/api/tagApi");
+var authApi = require("./controllers/api/authApi.js");
+var likeApi = require("./controllers/api/likeApi.js");
 
 var homeController = require("./controllers/homeController");
 var eventController = require("./controllers/eventController");
 
+var authorization = require("./middleware/authorization.js");
+
+app.use("/api/auhtorization", authApi);
 app.use("/api/v1/event", eventApi);
 app.use("/api/v1/tag", tagApi);
+app.use("/api/v1/like", authorization, likeApi);
 
 app.use("/event", eventController);
 app.use("/", homeController);

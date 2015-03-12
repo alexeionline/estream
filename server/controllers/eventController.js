@@ -5,7 +5,7 @@ var EventService = require("../services/eventService");
 router.get("/:id", function (req, res, next) {
     var id = req.params.id;
 
-    EventService.getEvent(id)
+    EventService.getEvent(id, true)
     .then(function (data) {
         res.render("event/index", { model: data });
     }).catch(function (err) {
