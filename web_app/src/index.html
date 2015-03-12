@@ -3,10 +3,19 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-
+	<script src="//connect.facebook.net/en_US/sdk.js"></script>
+	<script>
+		window.fbAsyncInit = function() {
+			FB.init({
+				appId      : '1603712379866563',
+				cookie     : true,  // enable cookies to allow the server to access 
+				xfbml      : true,  // parse social plugins on this page
+				version    : 'v2.2' // use version 2.2
+			});
+		};
+	</script>
 	<!-- bower:css -->
 	<!-- endbower -->
-
 	<link rel="stylesheet" href="/assets/css/bundle.min.css">
 </head>
 <body>
@@ -15,6 +24,8 @@
 		<header>
 			<section class="topsection">
 				<a class="addevent" href="addevent">add</a>
+				<button id="fblogin">fblogin</button>
+				<div id="status"></div>
 			</section>	
 			<section class="bottomsection">
 				<div class="logo"><a href="/"><h1>evehub.io</h1></a></div>
@@ -23,11 +34,7 @@
 					<button>go</button>
 				</p>
 				<ul class="hts">
-					{{#each model.tags}}
-						<li>
-							<a href="" data-value="{{_id}}">#{{_id}}</a>
-						</li>
-					{{/each}}
+					
 				</ul>
 			</section>	
 			<section class="time">
@@ -128,6 +135,7 @@
 	<script src="/app/views/event_form.js"></script>
 	<script src="/app/views/mainlayout.js"></script>
 	<script src="/app/models/event.js"></script>
+	<script src="/app/models/user.js"></script>
 	<script src="/app/collections/events.js"></script>
 	<script src="/app/approuter.js"></script>
 

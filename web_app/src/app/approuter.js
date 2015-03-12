@@ -11,7 +11,6 @@ var MyRouter = Backbone.Marionette.AppRouter.extend({
 		});
 
 		app.layout.details.show(eventDetails);
-
 	},
 
 	addevent: function () {
@@ -20,7 +19,6 @@ var MyRouter = Backbone.Marionette.AppRouter.extend({
 		});
 
 		app.layout.addDialog.show(view);
-
 	}
 
 });

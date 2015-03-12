@@ -15,7 +15,12 @@ function loadInitialData () {
 
 // Start history when our application is ready
 app.on('start', function() {
-	app.layout = new AppLayoutView;
+	app.user = new User;
+	
+	app.layout = new AppLayoutView({
+		fbuser: app.user
+	});
+	
 	app.router = new MyRouter;
 
 	app.layout.render().$el.appendTo('body');

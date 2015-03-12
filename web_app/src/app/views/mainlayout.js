@@ -7,11 +7,24 @@ var AppLayoutView = Backbone.Marionette.LayoutView.extend({
 	},
 
 	ui: {
-		'addeventBtn': '.addevent'
+		'addeventBtn': '.addevent',
+		'loginStatus': '#status',
+		'fblogin': '#fblogin'
+	},
+
+	initialize: function (opt) {
+		var th = this;
+
+		this.fbuser = opt.fbuser;
+
+		app.vent.on('user:fblogin:status', function (e) {
+			th.ui.loginStatus.html(e.message);
+		});
 	},
 
 	events: {
 		'click @ui.addeventBtn': 'showAddForm',
+		'click @ui.fblogin': 'fblogin',
 		'click .hts a': 'tagsearch'
 	},
 
@@ -25,5 +38,9 @@ var AppLayoutView = Backbone.Marionette.LayoutView.extend({
 
 		var sds = $(e.target).data('value'); 
 		Backbone.history.navigate("tag/" + sds, {trigger: true});
+	},
+
+	fblogin: function () {
+		this.fbuser.login();
 	}
 });
